@@ -11,28 +11,28 @@ class LotManager:
   current_parking_lot: ParkingLot = None
 
   def __init__(self):
-    print('_______________________________')
+    print('\n')
 
   def create_parking_lot(self, slots: int):
     self.current_parking_lot = ParkingLot(slots)
-    print(f'created parking lot with {slots} slots')
+    return f'created parking lot with {slots} slots'
 
   def park(self, plate: str, color: str):
     slot = self.current_parking_lot.first_available_slot()
     if slot:
       # TODO we need to validate the plate and color still
       self.current_parking_lot.park_car(slot, plate, color)
-      print(f'Allocated slot number: {slot}')
+      return f'Allocated slot number: {slot}'
     else:
-      print('the parking lot is full')
+      return 'the parking lot is full'
 
   def leave(self, slot: int):
     self.current_parking_lot.remove_car(slot)
-    print(f'slot number {slot} is free')
+    return f'slot number {slot} is free'
 
 
 # I am storing the slots in memory in case we need the data for something later
-  def registration_numbers_for_cars_with_color(self, color: str):
+  def registration_numbers_for_cars_with_color(self, color: str) -> [str]:
 
     slots = []
 
@@ -44,8 +44,7 @@ class LotManager:
     if len(slots) < 1:
       print('None Found')
     else:
-      for x in slots:
-        print(x.plate)
+      return [x.plate for x in slots]
 
   def slot_number_for_registration_number(self, plate: str):
 
@@ -56,9 +55,9 @@ class LotManager:
         slot = x
         break
 
-    print(slot.number if slot else 'Not Found')
+    return slot.number if slot else 'None Found'
 
-  def slot_numbers_for_cars_with_color(self, color: str):
+  def slot_numbers_for_cars_with_color(self, color: str) -> [str]:
 
     slots = []
 
@@ -67,10 +66,9 @@ class LotManager:
         slots.append(x)
 
     if len(slots) < 1:
-      print('None Found')
+      return 'None Found'
     else:
-      for x in slots:
-        print(x.number)
+      return [str(x.number) for x in slots]
 
   def status(self):
-    self.current_parking_lot.display_lot()
+    return self.current_parking_lot.display_lot()

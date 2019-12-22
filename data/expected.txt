@@ -1,0 +1,21 @@
+created parking lot with 6 slots
+Allocated slot number: 1
+Allocated slot number: 2
+Allocated slot number: 3
+Allocated slot number: 4
+Allocated slot number: 5
+Allocated slot number: 6
+slot number 4 is free
+Slot No. --- Registration No. --- Color
+ space: 1 plate: KA-01-HH-1234 color: white
+ space: 2 plate: KA-01-HH-9999 color: white
+ space: 3 plate: KA-01-BB-0001 color: black
+ space: 4 plate: None color: None
+ space: 5 plate: KA-01-HH-2701 color: blue
+ space: 6 plate: KA-01-HH-3141 color: black
+Allocated slot number: 4
+the parking lot is full
+['KA-01-HH-1234', 'KA-01-HH-9999', 'KA-01-P-333']
+['1', '2', '4']
+6
+None Found
