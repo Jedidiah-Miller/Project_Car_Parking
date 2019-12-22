@@ -39,9 +39,10 @@ class TerminalManager:
     output_file = open(f'./data/output/output_{string_time}.txt', 'w+')
 
     for line in input_file.readlines():
-      new_line = self.handle_terminal_command(line.strip())
+      terminal_output = self.handle_terminal_command(line.strip())
       # add the output to the result txt file
-      self.display_terminal_output(new_line)
+      new_line = self.handle_output(terminal_output)
+      print(new_line)
       output_file.write(f'\n{new_line}')
 
     input_file.close()
@@ -115,7 +116,7 @@ class TerminalManager:
     if not then we turn it into a string for a new line of output
     '''
     if type(output) is list:
-      output = ' ,'.join(output)
+      output = ', '.join(output)
     return output
 
 
