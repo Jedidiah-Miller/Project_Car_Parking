@@ -38,6 +38,6 @@ class ParkingLot:
     self.spaces[slot - 1] = ParkingSpace(slot)
 
   def display_lot(self):
-    print('parking lot status')
+    print('Slot No. --- Registration No. --- Color')
     for space in self.spaces:
       print(f'space: {space.number} plate: {space.plate} color: {space.color}')

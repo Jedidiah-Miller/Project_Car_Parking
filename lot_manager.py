@@ -30,20 +30,46 @@ class LotManager:
     self.current_parking_lot.remove_car(slot)
     print(f'slot number {slot} is free')
 
+
+# I am storing the slots in memory in case we need the data for something later
   def registration_numbers_for_cars_with_color(self, color: str):
+
+    slots = []
+
     for x in self.current_parking_lot.spaces:
       # do worry about case sensitive
       if x.color == color:
-        print(x.number)
+        slots.append(x)
+
+    if len(slots) < 1:
+      print('None Found')
+    else:
+      for x in slots:
+        print(x.plate)
 
   def slot_number_for_registration_number(self, plate: str):
+
+    slot = None
+
     for x in self.current_parking_lot.spaces:
       if x.plate == plate:
-        print(x.number)
+        slot = x
+        break
+
+    print(slot.number if slot else 'Not Found')
 
   def slot_numbers_for_cars_with_color(self, color: str):
+
+    slots = []
+
     for x in self.current_parking_lot.spaces:
       if x.color == color:
+        slots.append(x)
+
+    if len(slots) < 1:
+      print('None Found')
+    else:
+      for x in slots:
         print(x.number)
 
   def status(self):

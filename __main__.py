@@ -64,13 +64,13 @@ def handle_terminal_command(current_lot_manager: LotManager, commands: [str]):
       return False
 
   elif action == TerminalCommands.registration_numbers_for_cars_with_color:
-    current_lot_manager.registration_numbers_for_cars_with_color(commands[0])
+    current_lot_manager.registration_numbers_for_cars_with_color(commands[0].lower())
 
   elif action == TerminalCommands.slot_number_for_registration_number:
     current_lot_manager.slot_number_for_registration_number(commands[0])
 
   elif action == TerminalCommands.slot_numbers_for_cars_with_color:
-    current_lot_manager.slot_numbers_for_cars_with_color(commands[0])
+    current_lot_manager.slot_numbers_for_cars_with_color(commands[0].lower())
 
   else:
     print(f'{action} is not a valid command')
