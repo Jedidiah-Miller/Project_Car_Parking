@@ -7,30 +7,37 @@ from parking_space import ParkingSpace
 
 class ParkingLot:
 
-  spaces: list
+  spaces: [ParkingSpace]
 
   def __init__(self, slots: int):
     self.spaces = []
-    print(f'creating new parking lot with {slots} spaces')
-    self.fill_spaces(slots)
+    self.add_spaces(slots)
 
-  def fill_spaces(self, slots: int):
+  def add_spaces(self, slots: int):
     for i in range(slots):
       empty_space = ParkingSpace(i + 1) # index + 1 = the space number
       self.spaces.append(empty_space)
 
-  def add_car(self, slot: int, plate: str, color: str):
-    space = self.spaces[slot]
+  def park_car(self, slot: int, plate: str, color: str):
+    i = slot - 1
+    space = self.spaces[i]
     space.plate = plate
-    space.color = color
+    # lowercase the color in the event of somthing like 'blue' and 'Blue' not being the same
+    space.color = color.lower()
+    self.spaces[i] = space
 
-    self.spaces[slot] = space
+  def first_available_slot(self):
+
+    for space in self.spaces:
+      if not space.plate:
+        return space.number
+
+    return None
 
   def remove_car(self, slot: int):
-    print(f'removing car from slot {slot}')
-    self.spaces[slot] = ParkingSpace(slot)
+    self.spaces[slot - 1] = ParkingSpace(slot)
 
   def display_lot(self):
     print('parking lot status')
     for space in self.spaces:
-      print(f'{space.number} {space.plate} {space.color}')
+      print(f'space: {space.number} plate: {space.plate} color: {space.color}')
